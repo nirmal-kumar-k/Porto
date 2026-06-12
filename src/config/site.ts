@@ -15,8 +15,6 @@ import type { LucideIcon } from "lucide-react"
 import {
   Code2,
   Layout,
-  Server,
-  Cloud,
   Lightbulb,
   Sparkles,
   Users,

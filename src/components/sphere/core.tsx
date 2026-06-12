@@ -1,5 +1,5 @@
 import { useRef, useMemo } from "react"
-import { useFrame, type PointerEvent } from "@react-three/fiber"
+import { useFrame } from "@react-three/fiber"
 import { MeshDistortMaterial } from "@react-three/drei"
 import * as THREE from "three"
 import { createSeamCurve } from "./seam-geometry"
@@ -53,13 +53,13 @@ export function Core({ stateRef, pointer }: CoreProps) {
     return { positions, count }
   }, [])
 
-  const handlePointerDown = (event: PointerEvent<THREE.Mesh>) => {
+  const handlePointerDown = (event: { stopPropagation: () => void; clientX: number; clientY: number }) => {
     event.stopPropagation()
     dragging.current = true
     dragStart.current = { x: event.clientX, y: event.clientY }
   }
 
-  const handlePointerMove = (event: PointerEvent<THREE.Mesh>) => {
+  const handlePointerMove = (event: { stopPropagation: () => void; clientX: number; clientY: number }) => {
     if (!dragging.current || !group.current) return
     event.stopPropagation()
     const dx = event.clientX - dragStart.current.x

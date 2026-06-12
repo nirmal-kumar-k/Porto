@@ -17,7 +17,7 @@ function SceneContents() {
 
   // Update the target whenever the active section changes.
   useEffect(() => {
-    targetRef.current = SPHERE_STATES[activeSection]
+    targetRef.current = SPHERE_STATES[activeSection as keyof typeof SPHERE_STATES]
   }, [activeSection])
 
   // Pointer tracking for gentle response.
